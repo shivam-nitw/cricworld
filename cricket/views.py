@@ -229,7 +229,8 @@ def home(request, endfor=None):
                     b = "teamtwo"
                     resU['data'][k][b] = resU['data'][k].pop(a)
                     k = k + 1
-    resR['data'] = Match.objects.all()  # Change this later with last 15 records
+    resR['data'] = Match.objects.all().order_by('-unique_id') # Change this later with last 15 records
+    print(resR['data'])
     return render(request, "home.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
 
 def scoreboard(request,id):
