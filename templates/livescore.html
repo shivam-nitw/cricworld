@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+
+  <title> 
+    Print the content of a div 
+  </title> 
+  <style>
+.button {
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 1px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #4CAF50;} /* Green */
+</style>
+  <!-- Script to print the content of a div -->
+  <script type="text/javascript">
+  function printDiv(divn) {
+    document.getElementById(divn).style.display = "block";
+}
+  </script> 
+</head> 
+
+<body style="text-align:center;"> 
+   <button  class="button button1" onclick="printDiv('first')">FIRST</button>
+    <button class="button button2" onclick="printDiv('second')">SECOND</button>
+    <button class="button button3" onclick="printDiv('third')">THIRD</button>
+    <div id="first" style="display:none;" class="answer_list" >WELCOME SHIVAM</div>
+      <div id="second" style="display:none;" class="answer_list" >WELCOME VARUN</div>
+  <div id="third" style="display:none;" class="answer_list" >WELCOME SHANTANU</div>
+
+
+  
+
+ 
+</body> 
+
+</html>          

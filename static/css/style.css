@@ -1,0 +1,325 @@
+body {
+  font-family: 'Varela Round', sans-serif;
+}
+.form-control {
+  box-shadow: none;   
+  font-weight: normal;
+  font-size: 13px;
+}
+.navbar {
+  background: #fff;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #dfe3e8;
+  border-radius: 0;
+  
+}
+.nav-link img {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -8px 0;
+  float: left;
+  margin-right: 10px;
+}
+.navbar .navbar-brand {
+  padding-left: 0;
+  font-size: 20px;
+  padding-right: 50px;
+}
+.navbar .navbar-brand b {
+  color: #33cabb;   
+}
+.navbar .form-inline {
+  display: inline-block;
+}
+.navbar a {
+  color: #888;
+  font-size: 15px;
+}
+.search-box {
+  position: relative;
+} 
+.search-box input {
+  padding-right: 35px;
+  border-color: #dfe3e8;
+  border-radius: 4px !important;
+  box-shadow: none
+}
+.search-box .input-group-text {
+  min-width: 35px;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  padding: 7px;
+  height: 100%;
+}
+.search-box i {
+  color: #a0a5b1;
+  font-size: 19px;
+}
+.navbar .sign-up-btn {
+  min-width: 110px;
+  max-height: 36px;
+}
+.navbar .dropdown-menu {
+  color: #999;
+  font-weight: normal;
+  border-radius: 1px;
+  border-color: #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.navbar a, .navbar a:active {
+  color: #888;
+  padding: 8px 20px;
+  background: transparent;
+  line-height: normal;
+}
+.navbar .navbar-form {
+  border: none;
+}
+.navbar .action-form {
+  width: 280px;
+  padding: 20px;
+  left: auto;
+  right: 0;
+  font-size: 14px;
+}
+.navbar .action-form a {    
+  color: #33cabb;
+  padding: 0 !important;
+  font-size: 14px;
+}
+.navbar .action-form .hint-text {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+.navbar .btn-primary, .navbar .btn-primary:active {
+  color: #fff;
+  background: #33cabb !important;
+  border: none;
+} 
+.navbar .btn-primary:hover, .navbar .btn-primary:focus {    
+  color: #fff;
+  background: #31bfb1 !important;
+}
+.navbar .social-btn .btn, .navbar .social-btn .btn:hover {
+  color: #fff;
+  margin: 0;
+  padding: 0 !important;
+  font-size: 13px;
+  border: none;
+  transition: all 0.4s;
+  text-align: center;
+  line-height: 34px;
+  width: 47%;
+  text-decoration: none;
+}
+.navbar .social-btn .facebook-btn {
+  background: #507cc0;
+}
+.navbar .social-btn .facebook-btn:hover {
+  background: #4676bd;
+}
+.navbar .social-btn .twitter-btn {
+  background: #64ccf1;
+}
+.navbar .social-btn .twitter-btn:hover {
+  background: #4ec7ef;
+}
+.navbar .social-btn .btn i {
+  margin-right: 5px;
+  font-size: 16px;
+  position: relative;
+  top: 2px;
+}
+.or-seperator {
+  margin-top: 32px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+.or-seperator b {
+  color: #666;
+  padding: 0 8px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 26px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -15px;
+  z-index: 1;
+}
+.navbar .action-buttons .dropdown-toggle::after {
+  display: none;
+}
+.form-check-label input {
+  position: relative;
+  top: 1px;
+}
+@media (min-width: 1200px){
+  .form-inline .input-group {
+    width: 300px;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 768px){
+  .navbar .dropdown-menu.action-form {
+    width: 100%;
+    padding: 10px 15px;
+    background: transparent;
+    border: none;
+  }
+  .navbar .form-inline {
+    display: block;
+  }
+  .navbar .input-group {
+    width: 100%;
+  }
+}
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+main{
+	width: 100%;
+	height: 85vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center; color: white;
+}
+
+section{
+      margin-top: 200px;
+}
+
+section h3{
+	font-size: 35px; font-weight: 200; letter-spacing: 3px;
+	text-shadow: 1px 1px 2px black;
+}
+
+section h1{
+	margin: 30px 0 20px 0;
+    font-size: 55px;
+    font-weight: 700;
+    text-shadow: 2px 1px 5px black;
+    text-transform: uppercase;
+}
+
+section p{
+	font-size: 25px;
+    word-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px black;
+}
+
+section a{
+	padding: 12px 30px;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all .5s ease;
+}
+
+section .btnone{
+	/*background: #00b894;*/
+	background: #fff;
+	color: #000;
+}
+
+.btnone:hover{
+	background: #00b894;
+	color: white;
+}
+
+section .btntwo{
+	background: #00b894;
+	color: white;
+}
+
+ .btntwo:hover{
+ 	background: #fff;
+	color: #000;
+ }
+@media (max-width: 768px){
+  section a{
+  padding: 5px 10px;
+    border-radius: 2px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all .5s ease;
+}
+}
+.change_content:after{
+	content: '';
+	animation: changetext 10s infinite linear;
+	color: #00b894;
+}
+
+@keyframes changetext{
+	0%{content:"india";}
+	10% { content:"Australia"; }
+    20% { content:"south africa"; }
+    30% { content: "england"; }
+    40% { content: "pakistan"; }
+    50% { content: "new zealand"; }
+    60%{content:"bangladesh";}
+	70% { content:"srilanka"; }
+    80% { content:"West indies"; }
+    90% { content: "afghanistan"; }
+    100% { content: "ireland"; }
+}
+
+        body {
+  background:url(../images/e.jpg);
+  animation: chbg 15s infinite alternate;
+    background-repeat: no-repeat;
+  background-size:cover
+}
+@keyframes chbg {
+  0% {
+    background:url(../images/a.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+  20% {
+    background:url(../images/b.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+  40% {
+    background:url(../images/c.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+  60% {
+    background:url(../images/d.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+  80% {
+    background:url(../images/e.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+  100% {
+    background:url(../images/f.jpg);
+      background-repeat: no-repeat;
+  background-size:cover
+  }
+}

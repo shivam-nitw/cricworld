@@ -1,0 +1,184 @@
+{% extends 'base_layout.html' %}
+    {% block content %}
+	    <!--1st -->
+	    <div id="myDIV1" style="display: none;">
+                <h2 style="color:Tomato; text-align: center;">RECENT MATCHES</h2 >
+                <div class="box">
+                    <table class="container">
+                        <thead>
+                            <tr>
+                                <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+                                        </th>
+                                <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+                                </th>
+                                <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            <!--For CricApi Scores-->
+                {% for i in resR %}
+                    <div class="box" >
+                        <table class="container">
+                            <thead>
+                            <tr>
+                                <th><b>{{i.teamone}} vs {{i.teamtwo}}</b></th>
+                            </tr>
+                            </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{i.date}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{i.toss_winner_team}} have won the toss and they have decided to  {{i.elected}} first</td>
+                            </tr>
+                            <tr>
+                                <td ><b><a href="/scoreboard/{{i.unique_id}}" id="a">{{i.scoreone}}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ><b><a href="/scoreboard/{{i.unique_id}}" id="a">{{i.scoretwo}}</b><br></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ i.winner_team}} have won the Match
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Man Of The Match : {{i.man_of_the_match}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><br><b><a  href="#" class="l">Livescore</a> |
+                                        <a href="/scoreboard/{{i.unique_id}}" class="l">Scorecard</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+        <!--2nd -->
+
+        <div id="myDIV2" style="display: block;" >
+            <h2 style="color:Tomato; text-align: center;">LIVE MATCHES</h2 >
+            <div class="box">
+                <table class="container">
+                    <thead>
+                        <tr>
+                            <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+
+                                    </th>
+                            <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+
+                            </th>
+                            <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!--For CricApi Scores-->
+            {% for i in resC %}
+                {% if i.match_started == "true" %}
+                    <div class="box" >
+                        <table class="container">
+                            <thead>
+                            <tr>
+                                <th><b>{{i.localteam}} vs {{i.visitorteam}}</b></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>{{i.pubDate}}</td>
+                            </tr>
+                             <tr>
+                                <td>{{i.t_team_name}} have won the toss and they have elected to {{i.elected}} first</td>
+                            </tr>
+                            <tr>
+                                <td><b><a href="/scoreboard/{{i.unique_id}}" >{{i.score1}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b><a href="/scoreboard/{{i.unique_id}}" >{{i.score2}}</b></td>
+                            </tr>
+                            {% if i.winner_team != "null" %}
+                            <tr>
+                                <td>
+                                {{ i.winner_team }} have won the match
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if i.man_of_the_match != "null" %}
+                                <tr>
+                                    <td>
+                                        Man Of The Match : {{i.man_of_the_match}}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td><br><b><a  href="#" class="l">Livescore</a>  |
+                                        <a href="/scoreboard/{{i.unique_id}}" class="l">Scorecard</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="box">
+                        <table class="container">
+                            <thead>
+                                <tr align="center">
+                                    <!--<th id="adi"> <a href="index.html" id="see">See More</a>
+                                    </th>-->
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                 {% endif %}
+            {% endfor %}
+            </div>
+                <!--3rd -->
+
+        <div id="myDIV3" style="display: none;">
+            <h2 style="color:Tomato; text-align: center;">UPCOMING MATHES</h2 >
+            <div class="box">
+                <table class="container">
+                    <thead>
+                        <tr>
+                            <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+
+                                    </th>
+                            <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+
+                            </th>
+                            <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+            <!--For CricApi Scores-->
+            {% for i in resU %}
+                    <div class="box" >
+                        <table class="container">
+                           <thead>
+                            <tr>
+                                <th><b>{{i.teamone}} vs {{i.teamtwo}}</b></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td><i>{{i.date}}</i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            {% endfor %}
+            </div>
+        {% endblock %}

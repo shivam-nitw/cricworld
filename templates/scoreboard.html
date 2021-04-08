@@ -1,0 +1,182 @@
+{% extends 'base_layout.html' %}
+    {% block content %}
+       <div class="box">
+            <table class="container">
+                    <tr>
+                        <td colspan="7"><h2 style = "color : white "} >{{resC.description}}</h2></td>
+                     </tr>
+                <tr>
+                    <td  colspan="7"> <i>{{resC.date}}</i></td>
+                </tr>
+              <!--First Innings batting-->
+                    <tr>
+                        <td colspan="7"><h3>{{resC.score1}}  <h4>Innings</h4>    </h3></td>
+                    </tr>
+                        <tr>
+                              <th><h4>Batsman</h4></th>
+                              <th><h4>Wicket</h4></th>
+                              <th><h4>R</h4></th>
+                              <th><h4>B</h4></th>
+                              <th><h4>4s</h4></th>
+                              <th><h4>6s</h4></th>
+                              <th><h4>SR</h4></th>
+                         </tr>
+                    <tbody>
+                          {% for i in resC.summary.data.batting.0.scores %}
+                              <tr>
+                                  <td>{{i.batsman}}</td>
+                                  <td>{{i.dismissal_info}}</td>
+                                  <td>{{i.R}}</td>
+                                  <td>{{i.B}}</td>
+                                  <td>{{i.4s}}</td>
+                                  <td>{{i.6s}}</td>
+                                  <td>{{i.SR}}</td>
+                              </tr>
+                          {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+                  <!--First Innings Bowling -->
+                  <div class="box">
+                      <table class="container">
+                          <thead>
+                            <tr>
+                              <th><h4>Bowler</h4></th>
+                              <th><h4>O</h4></th>
+                              <th><h4>M</h4></th>
+                              <th><h4>R</h4></th>
+                              <th><h4>W</h4></th>
+                              <th><h4>NB</h4></th>
+                              <th><h4>WD</h4></th>
+                              <th><h4>Eco</h4></th>
+                              <th><h4>4's</h4></th>
+                              <th><h4>6's</h4></th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                          {% for i in resC.summary.data.bowling.0.scores %}
+                              <tr>
+                                  <td>{{i.bowler}}</td>
+                                  <td>{{i.O}}</td>
+                                  <td>{{i.M}}</td>
+                                  <td>{{i.R}}</td>
+                                  <td>{{i.W}}</td>
+                                  <td>{{i.NB}}</td>
+                                  <td>{{i.WD}}</td>
+                                  <td>{{i.Econ}}</td>
+                                  <td>{{i.6s}}</td>
+                                  <td>{{i.4s}}</td>
+                              </tr>
+                          {% endfor %}
+                           </tbody>
+                      </table>
+                  </div>
+
+                  <!--Second Innings Batting-->
+
+                  {% if resC.batsecond != "null" %}
+                      <div class="box">
+                          <table class="container">
+
+                                <tr>
+                                 <td colspan="7"><h3>{{resC.score2}}  </h3><h4>Innings</h4></td>
+                                </tr>
+                                <tr>
+                                  <th><h4>Batsman</h4></th>
+                                  <th><h4>Wicket</h4></th>
+                                  <th><h4>R</h4></th>
+                                  <th><h4>B</h4></th>
+                                  <th><h4>4s</h4></th>
+                                  <th><h4>6s</h4></th>
+                                  <th><h4>SR</h4></th>
+                                </tr>
+                                <tbody>
+                                {% for i in resC.summary.data.batting.1.scores %}
+                                  <tr>
+                                      <td>{{i.batsman}}</td>
+                                      <td>{{i.dismissal_info}}</td>
+                                      <td>{{i.R}}</td>
+                                      <td>{{i.B}}</td>
+                                      <td>{{i.4s}}</td>
+                                      <td>{{i.6s}}</td>
+                                      <td>{{i.SR}}</td>
+                                  </tr>
+                              {% endfor %}
+                                </tbody>
+                          </table>
+                      </div>
+
+                      <!--Second Innings Bowling -->
+                      <div class="box">
+                          <table class="container">
+                              <thead>
+                                <tr>
+                                  <th><h4>Bowler</h4></th>
+                                  <th><h4>O</h4></th>
+                                  <th><h4>M</h4></th>
+                                  <th><h4>R</h4></th>
+                                  <th><h4>W</h4></th>
+                                  <th><h4>NB</h4></th>
+                                  <th><h4>WD</h4></th>
+                                  <th><h4>Eco</h4></th>
+                                  <th><h4>4's</h4></th>
+                                  <th><h4>6's</h4></th>
+                                </tr>
+                              </thead>
+                                <tbody>
+                              {% for i in resC.summary.data.bowling.1.scores %}
+                                  <tr>
+                                      <td>{{i.bowler}}</td>
+                                      <td>{{i.O}}</td>
+                                      <td>{{i.M}}</td>
+                                      <td>{{i.R}}</td>
+                                      <td>{{i.W}}</td>
+                                      <td>{{i.NB}}</td>
+                                      <td>{{i.WD}}</td>
+                                      <td>{{i.Econ}}</td>
+                                      <td>{{i.6s}}</td>
+                                      <td>{{i.4s}}</td>
+                                  </tr>
+                              {% endfor %}
+                               <tbody>
+                          </table>
+                      </div>
+                  {% endif %}
+
+ <div  class="extra">
+
+    <table class="cont" style="background: #276678;border-radius: 25px">
+      <tbody>
+              <tr>
+                  <td colspan="2">{% if resC.summary.data.winner_team != "null" %}
+                            {{ resC.summary.data.winner_team}} have won the Match
+                      {% endif %}
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                      {% if resC.summary.data.man_of_the_match != "null" %}
+                      Man Of The Match : {{resC.summary.data.man_of_the_match.name}}
+                      {% endif %}
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                  <h3>{{resC.summary.data.team.0.name}} Squad</h3>
+                      {% for i in resC.summary.data.team.0.players %}
+                        {{i.name}} ,
+                      {% endfor %}
+                  </td>
+                </tr>
+                  <td>
+                      <h3>{{resC.summary.data.team.1.name}} Squad</h3>
+                      {% for i in resC.summary.data.team.1.players %}
+                        {{i.name}} ,
+                      {% endfor %}
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    {% endblock %}
