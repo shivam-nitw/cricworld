@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2zoa1()30qd*w7ebwowvwvvecx^08_w082$h-7jr2%7m$rq*-@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','cricworldipl.herokuapp.com']
 
