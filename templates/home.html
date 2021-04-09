@@ -1,6 +1,11 @@
 {% extends 'base_layout.html' %}
     {% block content %}
 	    <!--1st -->
+	    <head>
+            <base href="/"> <!--this is required because earlier it's not loading CSS file because MIME checking was enabled -->
+            <link rel="stylesheet" type="text/css" href="static/css/styleone.css">
+            <script src="static/js/java.js"></script>
+        </head>
 	    <div id="myDIV1" style="display: none;">
                 <h2 style="color:Tomato; text-align: center;">RECENT MATCHES</h2 >
                 <div class="box">
