@@ -194,7 +194,6 @@ QtPy==1.9.0
 rope==0.17.0
 rsa==4.6
 
-ruamel-yaml==0.15.87
 
 
 seaborn==0.10.1
