@@ -77,13 +77,8 @@ WSGI_APPLICATION = 'Cricworld.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Cricworld',
-        'USER': 'postgres',
-        'PASSWORD': '9617042730',
-        'HOST': 'localhost',
-        'PORT': '5432'
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
