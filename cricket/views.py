@@ -118,7 +118,7 @@ def scores(i,resC,over) :
             else:
                 resC['data'][i]['score1'] = sthree + stwo
                 if over['Otwo'] == 0:
-                    recC['data'][i]['score2'] = sone
+                    resC['data'][i]['score2'] = sone
                 else:
                     resC['data'][i]['score2'] = sone + sfour
             break
@@ -196,16 +196,17 @@ def home(request, endfor=None):
                             over = overs(resS)
                             scores(i,resC, over)
 
+                            #Processing man of the mtch and winner team
                             if resS['data']['man-of-the-match']!="" :
                                    resS['man_of_the_match'] = resS['data']['man-of-the-match']['name']
-
                             else :
                                 resS['man_of_the_match'] = "null"
 
-                            if not "winner_team" in resS :
+                            if not "winner_team" in resS['data'] :
                                 resS["winner_team"] = "null"
                             else :
                                 resS["winner_team"] = resS['data']['winner_team']
+                            print("Winner : ",resS["winner_team"])
                             resC['data'][i]["winner_team"] = resS["winner_team"]
                             resC['data'][i]["man_of_the_match"] = resS["man_of_the_match"]
 
@@ -229,7 +230,7 @@ def home(request, endfor=None):
                     b = "teamtwo"
                     resU['data'][k][b] = resU['data'][k].pop(a)
                     k = k + 1
-    resR['data'] = Match.objects.all().order_by('-unique_id') # Change this later with last 15 records
+    resR['data'] = Match.objects.all().order_by('-date') # Change this later with last 15 records
     return render(request, "home.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
 
 def scoreboard(request,id):
@@ -299,13 +300,10 @@ def scoreboard(request,id):
             else:
                 resC['data']['score1'] = sthree + stwo
                 if over['Otwo'] == 0:
-                    recC['data']['score2'] = sone
+                    resC['data']['score2'] = sone
                 else:
                     resC['data']['score2'] = sone + sfour
             break
-
-
-
 
     a = "dismissal-info"
     b = "dismissal_info"        #changing '-' to '_' as it is more convinent to parse '_' in DTL
@@ -321,6 +319,3 @@ def scoreboard(request,id):
         resS['data']['man-of-the-match'] = 'null'
     resC['data']['summary'] = resS
     return render(request, "scoreboard.html", {'resC': resC['data']})
-
-
-
