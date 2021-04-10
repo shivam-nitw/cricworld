@@ -196,7 +196,6 @@ rope==0.17.0
 rsa==4.6
 
 ruamel-yaml==0.15.87
-scikit-image==0.16.2
 
 
 seaborn==0.10.1
