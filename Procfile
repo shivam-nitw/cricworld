@@ -1,1 +1,2 @@
-web: gunicorn Cricworld.wsgi --log file
+
+web: gunicorn Cricworld.wsgi
