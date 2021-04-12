@@ -147,24 +147,24 @@
                     </tr>
                         <tr>
                               <th><h6>Batsman</h6></th>
-                              <th><h6>Wicket</h6></th>
-                              <th style = "font-size : 11px"><h6>R</h6></th>
-                              <th style = "font-size : 11px"><h6>B</h6></th>
-                              <th style = "font-size : 11px"><h6>4</h6></th>
-                              <th style = "font-size : 11px"><h6>6</h6></th>
-                              <th style = "font-size : 11px"><h6>SR</h6></th>
+                                  <th><h6>Wicket</h6></th>
+                                  <th ><h6>R</h6></th>
+                                  <th ><h6>B</h6></th>
+                                  <th ><h6>4</h6></th>
+                                  <th ><h6>6</h6></th>
+                                  <th ><h6>SR</h6></th>
                          </tr>
 
                     <tbody>
                           {% for i in resS.data.batting.0.scores %}
                               <tr>
-                                  <td style = "font-size : 14px">{{i.batsman}}</td>
-                                  <td style = "font-size : 13px">{{i.dismissal_info}}</td>
-                                  <td style = "font-size : 12px">{{i.R}}</td>
-                                  <td style = "font-size : 12px">{{i.B}}</td>
-                                  <td style = "font-size : 12px">{{i.4s}}</td>
-                                  <td style = "font-size : 12px">{{i.6s}}</td>
-                                  <td style = "font-size : 12px">{{i.SR}}</td>
+                                  <td>{{i.batsman}}<div class="dis">{{i.dismissal_info}}</div></td>
+                                  <td >{{i.dismissal_info}}</td>
+                                  <td >{{i.R}}</td>
+                                  <td >{{i.B}}</td>
+                                  <td >{{i.4s}}</td>
+                                  <td >{{i.6s}}</td>
+                                  <td >{{i.SR}}</td>
                               </tr>
                           {% endfor %}
                 </tbody>
@@ -177,6 +177,7 @@
                           <thead>
                             <tr>
                               <th><h6>Bowler</h6></th>
+                              <th><h6>4's</h6></th>
                               <th><h6>O</h6></th>
                               <th><h6>M</h6></th>
                               <th><h6>R</h6></th>
@@ -184,23 +185,22 @@
                               <th><h6>NB</h6></th>
                               <th><h6>WD</h6></th>
                               <th><h6>Eco</h6></th>
-                              <th><h6>4's</h6></th>
                               <th><h6>6's</h6></th>
                             </tr>
                           </thead>
                            <tbody>
                           {% for i in resS.data.bowling.0.scores %}
                               <tr>
-                                      <td style = "font-size : 14px">{{i.bowler}}</td>
-                                      <td style = "font-size : 13px">{{i.O}}</td>
-                                      <td style = "font-size : 13px">{{i.M}}</td>
-                                      <td style = "font-size : 13px">{{i.R}}</td>
-                                      <td style = "font-size : 13px">{{i.W}}</td>
-                                      <td style = "font-size : 13px">{{i.NB}}</td>
-                                      <td style = "font-size : 13px">{{i.WD}}</td>
-                                      <td style = "font-size : 13px">{{i.Econ}}</td>
-                                      <td style = "font-size : 13px">{{i.4s}}</td>
-                                      <td style = "font-size : 13px">{{i.6s}}</td>
+                                      <td >{{i.bowler}}</td>
+                                      <td>{{i.4s}}</td>
+                                      <td >{{i.O}}</td>
+                                      <td >{{i.M}}</td>
+                                      <td >{{i.R}}</td>
+                                      <td >{{i.W}}</td>
+                                      <td >{{i.NB}}</td>
+                                      <td >{{i.WD}}</td>
+                                      <td >{{i.Econ}}</td>
+                                      <td >{{i.6s}}</td>
                               </tr>
                           {% endfor %}
                            </tbody>
@@ -218,22 +218,22 @@
                                 <tr>
                                   <th><h6>Batsman</h6></th>
                                   <th><h6>Wicket</h6></th>
-                                  <th style = "font-size : 11px"><h6>R</h6></th>
-                                  <th style = "font-size : 11px"><h6>B</h6></th>
-                                  <th style = "font-size : 11px"><h6>4</h6></th>
-                                  <th style = "font-size : 11px"><h6>6</h6></th>
-                                  <th style = "font-size : 11px"><h6>SR</h6></th>
+                                  <th ><h6>R</h6></th>
+                                  <th ><h6>B</h6></th>
+                                  <th ><h6>4</h6></th>
+                                  <th ><h6>6</h6></th>
+                                  <th ><h6>SR</h6></th>
                                 </tr>
                                 <tbody>
                                 {% for i in resS.data.batting.1.scores %}
                                   <tr>
-                                      <td style = "font-size : 14px">{{i.batsman}}</td>
-                                      <td style = "font-size : 13px">{{i.dismissal_info}}</td>
-                                      <td style = "font-size : 12px">{{i.R}}</td>
-                                      <td style = "font-size : 12px">{{i.B}}</td>
-                                      <td style = "font-size : 12px">{{i.4s}}</td>
-                                      <td style = "font-size : 12px">{{i.6s}}</td>
-                                      <td style = "font-size : 12px">{{i.SR}}</td>
+                                      <td>{{i.batsman}}<div class="dis">{{i.dismissal_info}}</div></td>
+                                      <td >{{i.dismissal_info}}</td>
+                                      <td >{{i.R}}</td>
+                                      <td >{{i.B}}</td>
+                                      <td >{{i.4s}}</td>
+                                      <td >{{i.6s}}</td>
+                                      <td >{{i.SR}}</td>
                                   </tr>
                               {% endfor %}
                                 </tbody>
@@ -246,6 +246,7 @@
                               <thead>
                                 <tr>
                                   <th><h6>Bowler</h6></th>
+                                  <th><h6>4's</h6></th>
                                   <th><h6>O</h6></th>
                                   <th><h6>M</h6></th>
                                   <th><h6>R</h6></th>
@@ -253,23 +254,22 @@
                                   <th><h6>NB</h6></th>
                                   <th><h6>WD</h6></th>
                                   <th><h6>Eco</h6></th>
-                                  <th><h6>4's</h6></th>
                                   <th><h6>6's</h6></th>
                                 </tr>
                               </thead>
                                 <tbody>
                               {% for i in resS.data.bowling.1.scores %}
                                   <tr>
-                                      <td style = "font-size : 14px">{{i.bowler}}</td>
-                                      <td style = "font-size : 13px">{{i.O}}</td>
-                                      <td style = "font-size : 13px">{{i.M}}</td>
-                                      <td style = "font-size : 13px">{{i.R}}</td>
-                                      <td style = "font-size : 13px">{{i.W}}</td>
-                                      <td style = "font-size : 13px">{{i.NB}}</td>
-                                      <td style = "font-size : 13px">{{i.WD}}</td>
-                                      <td style = "font-size : 13px">{{i.Econ}}</td>
-                                      <td style = "font-size : 13px">{{i.4s}}</td>
-                                      <td style = "font-size : 13px">{{i.6s}}</td>
+                                      <td >{{i.bowler}}</td>
+                                      <td>{{i.4s}}</td>
+                                      <td >{{i.O}}</td>
+                                      <td >{{i.M}}</td>
+                                      <td >{{i.R}}</td>
+                                      <td >{{i.W}}</td>
+                                      <td >{{i.NB}}</td>
+                                      <td >{{i.WD}}</td>
+                                      <td >{{i.Econ}}</td>
+                                      <td >{{i.6s}}</td>
                                   </tr>
                               {% endfor %}
                                <tbody>
@@ -313,6 +313,9 @@
             </tbody>
           </table>
       </div>
+      <br>
+      <br>
+      <br>
       <!-- *************************footer start************************* -->
         <!-- Footer -->
      <footer class="page-footer font-small blue-grey lighten-3" style="background-color: black ">
