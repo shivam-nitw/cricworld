@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>CricWorld</title>
         <base href="/"> <!--this is required because earlier it's not loading CSS file because MIME checking was enabled -->
-        <link rel="stylesheet" type="text/css" href="static/css/styletwo.css">
+        <link rel="stylesheet" type="text/css" href="static/js/styletwo.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -35,15 +35,14 @@
                         <a href="#" class="dropdown-item">தமிழ்</a>
                       </div>
                   </div>
-                <a href="#" class="nav-item nav-link">MATCHES</a>
+                <a href="/ipl" class="nav-item nav-link"><b>IPL</b></a>
 
                 <div class="nav-item dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">VIDEO</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">World Cul </a>
-                        <a href="#" class="dropdown-item">IND VS ENG</a>
-                        <a href="#" class="dropdown-item">IND VS ENG</a>
-                        <a href="#" class="dropdown-item">IND VS ENG</a>
+                        <a href="#" class="dropdown-item">ODI World Cup </a>
+                                <a href="#" class="dropdown-item">T-20 World Cup</a>
+                                <a href="#" class="dropdown-item">IPL</a>
                       </div>
                   </div>
                 <a href="#" class="nav-item nav-link active">TEAMS</a>
@@ -129,7 +128,7 @@
             <table class="container">
                     {% if resS.description != "null"%}
                     <tr>
-                        <td colspan="7"><h2 style = "color : white "} >{{resS.description}}</h2></td>
+                        <td colspan="7"><h2 style = "color : white "} >{{resC.description}}</h2></td>
                      </tr>
                     {% else %}
                     <tr>
@@ -316,5 +315,105 @@
       </div>
       <!-- *************************footer start************************* -->
         <!-- Footer -->
+     <footer class="page-footer font-small blue-grey lighten-3" style="background-color: black ">
+              <!-- Footer Links -->
+              <div class="container text-center text-md-left mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3 dark-grey-text">
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mb-4">
+                    <!-- Content -->
+                    <a href="#"><h3>Cric<b style="color: red">World</b></h3></a>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Follow US ON</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                    <p >
+                       <a href="#" class="fa fa-facebook" style="margin-left :10px; "></a> Facebook
+                    </p>
+                    <p>
+                   <a href="#" class="fa fa-twitter"  style="margin-left :10px; "></a>        Twitter
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-instagram"  style="margin-left :10px; "></a>    Instagram
+                    </p>
+                    <!--<p>
+                    <a href="#" class="fa fa-youtube"  style="margin-left :10px; "></a>     Youtube
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-pinterest"  style="margin-left :10px; "></a>   Pinterest
+                    </p> -->
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Company</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                      <a class="dark-grey-text" href="#signup">Careers</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#!">Advertise</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#help">CricWorld Ads</a>
+                    </p>
+                    <!-- <p>
+                      <a class="dark-grey-text" href="#aboutus">Privacy Policy</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#help">Terms of Use</a>
+                    </p>
+                      -->
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">CONTACT US</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                    <p >
+                        Mail Us at
+                        <a href="#" class="fa fa-google" style="margin-left :10px; "></a>
+                        cricworldipl@gmail.com
+                    </p>
+                    <p><a href="#" class="fa fa-comments"  style="margin-left :10px; "></a>
+                    Write About US
+                    </p>
+                    <p>
+                    </a> <input type="text" placeholder="Plz Give Suggestions" name="varun" >
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-android"  style="margin-left :10px; "></a>  App
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-apple"  style="margin-left :10px; "></a>  ios
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+              </div>
+              <!-- Footer Links -->
+
+              <!-- Copyright -->
+              <div class="footer-copyright text-center text-black-50 py-3">© 2021 Copyright:
+                <a class="dark-grey-text" href="https://mdbootstrap.com/"> </a>
+              </div>
+              <!-- Copyright -->
+
+            </footer>
     </body>
 </html>

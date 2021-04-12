@@ -6,5 +6,6 @@ from . import views
 urlpatterns =[
     path('', views.index, name='index'),
     path('home',views.home, name='home'),
-    url('scoreboard/(?P<id>\w+)',views.scoreboard, name='scoreboard')
+    url('scoreboard/(?P<id>\w+)',views.scoreboard, name='scoreboard'),
+    url('ipl',views.ipl,name='ipl')
 ]

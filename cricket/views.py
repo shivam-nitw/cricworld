@@ -272,13 +272,17 @@ def scoreboard(request,id):
 
     if a != -1 :
         # Adding team names according to batting order
+        resC['toss_winner_team'] = resS['data']['toss_winner_team']
         l = len(resS['data']['batting'][0]['title'])
         title = resS['data']['batting'][0]['title']
         title = title[::-1]  # reversing title
         title = title[27:l]
         title = title[::-1]
         resC['batfirst'] = title
-
+        if resC['batfirst'][:5] == resC['toss_winner_team'][:5] :
+            resC['elected'] = "bat"
+        else :
+            resC['elected'] = 'bowl'
         if  len(resS['data']['batting']) > 1  :
             l = len(resS['data']['batting'][1]['title'])
             title = resS['data']['batting'][1]['title']
@@ -299,13 +303,13 @@ def scoreboard(request,id):
                 sthree = resC['description'][index + 1:]
                 sfour = '(' + str(over['Otwo']) + ')'
                 if resC['batfirst'][0:5] == sone[0:5]:
-                    resC['scoreonw'] = sone + stwo
+                    resC['scoreone'] = sone + stwo
                     if over['Otwo'] == 0:
                         resC['scoretwo'] = sthree
                     else:
                         resC['scoretwo'] = sthree + sfour
                 else:
-                    resC['score1'] = sthree + stwo
+                    resC['scoreone'] = sthree + stwo
                     if over['Otwo'] == 0:
                         resC['scoretwo'] = sone
                     else:
@@ -323,8 +327,13 @@ def scoreboard(request,id):
         b = 'man_of_the_match'
         resS['data'][b] = resS['data'].pop(a)
     else:
-        resS['data']['man-of-the-match'] = 'null'
+        resS['data']['man_of_the_match'] = 'null'
 
+    if not "winner_team" in resS['data'] :
+        resS['data']['winner_team'] = "null"
 
     #print("1 : ", resS['summary'][0]['teamone'])
     return render(request, "scoreboard.html", {'resS': resS , 'resC' : resC})
+
+def ipl(request) :
+    return render(request,"IPL.html")
