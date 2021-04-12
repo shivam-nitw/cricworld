@@ -4,7 +4,6 @@ import requests
 from collections import defaultdict
 from .models import Match
 from django.db import models
-
 # Create your views here.
 def index(request):
     return render(request, "index.html", dict(link1='home'))
@@ -206,7 +205,7 @@ def home(request, endfor=None):
                                 resS["winner_team"] = "null"
                             else :
                                 resS["winner_team"] = resS['data']['winner_team']
-                            print("Winner : ",resS["winner_team"])
+
                             resC['data'][i]["winner_team"] = resS["winner_team"]
                             resC['data'][i]["man_of_the_match"] = resS["man_of_the_match"]
 
@@ -231,6 +230,7 @@ def home(request, endfor=None):
                     resU['data'][k][b] = resU['data'][k].pop(a)
                     k = k + 1
     resR['data'] = Match.objects.all().order_by('-date') # Change this later with last 15 records
+    print("AA : ", resR['data'][0])
     return render(request, "home.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
 
 def scoreboard(request,id):
@@ -245,77 +245,86 @@ def scoreboard(request,id):
     ID = ""
 
     res = defaultdict()
+    resC = defaultdict()
     for i in keys:
         res = json.loads(requests.get(f'http://cricapi.com/api/cricket?apikey={i}').text)
         if not 'error' in res.keys():
             ID = i
             break
 
-    resC = defaultdict()
+
     I = 0
     for i in range(len(res['data'])):
         if int(res['data'][i]['unique_id']) == id :
-            resC['data'] = res['data'][i]
+            resC = res['data'][i]
             I = i
             break
+
     resS = json.loads(requests.get(f'https://cricapi.com/api/fantasySummary?apikey={ID}&unique_id={id}').text)
-    resc = json.loads(requests.get(f'http://cricapi.com/api/matches?apikey={i}').text)
+    #resc = json.loads(requests.get(f'http://cricapi.com/api/matches?apikey={i}').text)
 
-    # Adding team names according to batting order
-    l = len(resS['data']['batting'][0]['title'])
-    title = resS['data']['batting'][0]['title']
-    title = title[::-1]     #reversing title
-    title = title[27:l]
-    title = title[::-1]
-    resC['data']['batfirst'] = title
+    a = 0
+    if len(resC) == 0 :
+        resC = Match.objects.get(unique_id = id)
+        #resS['summary'] = resC
+        resS['description'] = 'null'
+        a = -1
 
-
-    if  len(resS['data']['batting']) > 1  :
-        l = len(resS['data']['batting'][1]['title'])
-        title = resS['data']['batting'][1]['title']
+    if a != -1 :
+        # Adding team names according to batting order
+        l = len(resS['data']['batting'][0]['title'])
+        title = resS['data']['batting'][0]['title']
+        title = title[::-1]  # reversing title
+        title = title[27:l]
         title = title[::-1]
-        title = title[41:l]
-        title = title[::-1]
-        resC['data']['batsecond'] = title
-    else :
-        resC['data']['batsecond'] = "null"
+        resC['batfirst'] = title
 
-    l = len(resC['data']['description'])
-    over = overs(resS)
+        if  len(resS['data']['batting']) > 1  :
+            l = len(resS['data']['batting'][1]['title'])
+            title = resS['data']['batting'][1]['title']
+            title = title[::-1]
+            title = title[41:l]
+            title = title[::-1]
+            resC['batsecond'] = title
+        else :
+            resC['batsecond'] = "null"
 
-    l = len(resC['data']['description'])
-    for index in range(5, l):
-        if (resC['data']['description'][index] == 'v' and resC['data']['description'][index - 1] == " " and
-                resC['data']['description'][index + 1] == " "):
-            sone = resC['data']['description'][0:index - 1]
-            stwo = '(' + str(over['Oone']) + ')'
-            sthree = resC['data']['description'][index + 1:]
-            sfour = '(' + str(over['Otwo']) + ')'
-            if resC['data']['batfirst'][0:5] == sone[0:5]:
-                resC['data']['score1'] = sone + stwo
-                if over['Otwo'] == 0:
-                    resC['data']['score2'] = sthree
+
+        over = overs(resS)
+        for index in range(5, l):
+            if (resC['description'][index] == 'v' and resC['description'][index - 1] == " " and
+                    resC['description'][index + 1] == " "):
+                sone = resC['description'][0:index - 1]
+                stwo = '(' + str(over['Oone']) + ')'
+                sthree = resC['description'][index + 1:]
+                sfour = '(' + str(over['Otwo']) + ')'
+                if resC['batfirst'][0:5] == sone[0:5]:
+                    resC['scoreonw'] = sone + stwo
+                    if over['Otwo'] == 0:
+                        resC['scoretwo'] = sthree
+                    else:
+                        resC['scoretwo'] = sthree + sfour
                 else:
-                    resC['data']['score2'] = sthree + sfour
-            else:
-                resC['data']['score1'] = sthree + stwo
-                if over['Otwo'] == 0:
-                    resC['data']['score2'] = sone
-                else:
-                    resC['data']['score2'] = sone + sfour
-            break
+                    resC['score1'] = sthree + stwo
+                    if over['Otwo'] == 0:
+                        resC['scoretwo'] = sone
+                    else:
+                        resC['scoreone'] = sone + sfour
+                break
 
     a = "dismissal-info"
-    b = "dismissal_info"        #changing '-' to '_' as it is more convinent to parse '_' in DTL
-    for i in range(len(resS['data']['batting'])) :
-        for j in resS['data']['batting'][i]['scores'] :
+    b = "dismissal_info"  # changing '-' to '_' as it is more convineant to parse '_' in DTL
+    for i in range(len(resS['data']['batting'])):
+        for j in resS['data']['batting'][i]['scores']:
             j[b] = j.pop(a)
 
-    if resS['data']['man-of-the-match'] !="" :
+    if resS['data']['man-of-the-match'] != "":
         a = 'man-of-the-match'
         b = 'man_of_the_match'
         resS['data'][b] = resS['data'].pop(a)
-    else :
+    else:
         resS['data']['man-of-the-match'] = 'null'
-    resC['data']['summary'] = resS
-    return render(request, "scoreboard.html", {'resC': resC['data']})
+
+
+    #print("1 : ", resS['summary'][0]['teamone'])
+    return render(request, "scoreboard.html", {'resS': resS , 'resC' : resC})

@@ -127,28 +127,37 @@
       </nav>
        <div class="box">
             <table class="container">
+                    {% if resS.description != "null"%}
                     <tr>
-                        <td colspan="7"><h2 style = "color : white "} >{{resC.description}}</h2></td>
+                        <td colspan="7"><h2 style = "color : white "} >{{resS.description}}</h2></td>
                      </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7"><h2 style = "color : white "} >{{resC.teamone}}   VS     {{resC.teamtwo}}</h2></td>
+                     </tr>
+                    {% endif %}
+
                 <tr>
                     <td  colspan="7"> <i>{{resC.date}}</i></td>
                 </tr>
+                <tr ><td colspan="7">{{resC.toss_winner_team}}  have won the toss and they  decided to {{resC.elected}} first</td></tr>
+
               <!--First Innings batting-->
                     <tr>
-                        <td colspan="7"><h3>{{resC.score1}}  <h4>Innings</h4>    </h3></td>
+                        <td colspan="7"><h3>{{resC.scoreone}}  <h4>Innings</h4>    </h3></td>
                     </tr>
                         <tr>
-                              <th><h4>Batsman</h4></th>
-                              <th><h4>Wicket</h4></th>
-                              <th><h4>R</h4></th>
-                              <th><h4>B</h4></th>
-                              <th><h4>4s</h4></th>
-                              <th><h4>6s</h4></th>
-                              <th><h4>SR</h4></th>
+                              <th><h6>Batsman</h6></th>
+                              <th><h6>Wicket</h6></th>
+                              <th><h6>R</h6></th>
+                              <th><h6>B</h6></th>
+                              <th><h6>4s</h6></th>
+                              <th><h6>6s</h6></th>
+                              <th><h6>SR</h6></th>
                          </tr>
 
                     <tbody>
-                          {% for i in resC.summary.data.batting.0.scores %}
+                          {% for i in resS.data.batting.0.scores %}
                               <tr>
                                   <td>{{i.batsman}}</td>
                                   <td>{{i.dismissal_info}}</td>
@@ -163,25 +172,25 @@
             </table>
         </div>
 
-                  <!--First Innings Bowling -->
+                  <!--First Inning Bowling -->
                   <div class="box">
                       <table class="container">
                           <thead>
                             <tr>
-                              <th><h4>Bowler</h4></th>
-                              <th><h4>O</h4></th>
-                              <th><h4>M</h4></th>
-                              <th><h4>R</h4></th>
-                              <th><h4>W</h4></th>
-                              <th><h4>NB</h4></th>
-                              <th><h4>WD</h4></th>
-                              <th><h4>Eco</h4></th>
-                              <th><h4>4's</h4></th>
-                              <th><h4>6's</h4></th>
+                              <th><h6>Bowler</h6></th>
+                              <th><h6>O</h6></th>
+                              <th><h6>M</h6></th>
+                              <th><h6>R</h6></th>
+                              <th><h6>W</h6></th>
+                              <th><h6>NB</h6></th>
+                              <th><h6>WD</h6></th>
+                              <th><h6>Eco</h6></th>
+                              <th><h6>4's</h6></th>
+                              <th><h6>6's</h6></th>
                             </tr>
                           </thead>
                            <tbody>
-                          {% for i in resC.summary.data.bowling.0.scores %}
+                          {% for i in resS.data.bowling.0.scores %}
                               <tr>
                                   <td>{{i.bowler}}</td>
                                   <td>{{i.O}}</td>
@@ -191,8 +200,8 @@
                                   <td>{{i.NB}}</td>
                                   <td>{{i.WD}}</td>
                                   <td>{{i.Econ}}</td>
-                                  <td>{{i.6s}}</td>
                                   <td>{{i.4s}}</td>
+                                  <td>{{i.6s}}</td>
                               </tr>
                           {% endfor %}
                            </tbody>
@@ -204,21 +213,20 @@
                   {% if resC.batsecond != "null" %}
                       <div class="box">
                           <table class="container">
-
                                 <tr>
-                                 <td colspan="7"><h3>{{resC.score2}}  </h3><h4>Innings</h4></td>
+                                 <td colspan="7"><h3>{{resC.scoretwo}}  </h3><h4>Innings</h4></td>
                                 </tr>
                                 <tr>
-                                  <th><h4>Batsman</h4></th>
-                                  <th><h4>Wicket</h4></th>
-                                  <th><h4>R</h4></th>
-                                  <th><h4>B</h4></th>
-                                  <th><h4>4s</h4></th>
-                                  <th><h4>6s</h4></th>
-                                  <th><h4>SR</h4></th>
+                                  <th><h6>Batsman</h6></th>
+                                  <th><h6>Wicket</h6></th>
+                                  <th><h6>R</h6></th>
+                                  <th><h6>B</h6></th>
+                                  <th><h6>4s</h6></th>
+                                  <th><h6>6s</h6></th>
+                                  <th><h6>SR</h6></th>
                                 </tr>
                                 <tbody>
-                                {% for i in resC.summary.data.batting.1.scores %}
+                                {% for i in resS.data.batting.1.scores %}
                                   <tr>
                                       <td>{{i.batsman}}</td>
                                       <td>{{i.dismissal_info}}</td>
@@ -238,20 +246,20 @@
                           <table class="container">
                               <thead>
                                 <tr>
-                                  <th><h4>Bowler</h4></th>
-                                  <th><h4>O</h4></th>
-                                  <th><h4>M</h4></th>
-                                  <th><h4>R</h4></th>
-                                  <th><h4>W</h4></th>
-                                  <th><h4>NB</h4></th>
-                                  <th><h4>WD</h4></th>
-                                  <th><h4>Eco</h4></th>
-                                  <th><h4>4's</h4></th>
-                                  <th><h4>6's</h4></th>
+                                  <th><h6>Bowler</h6></th>
+                                  <th><h6>O</h6></th>
+                                  <th><h6>M</h6></th>
+                                  <th><h6>R</h6></th>
+                                  <th><h6>W</h6></th>
+                                  <th><h6>NB</h6></th>
+                                  <th><h6>WD</h6></th>
+                                  <th><h6>Eco</h6></th>
+                                  <th><h6>4's</h6></th>
+                                  <th><h6>6's</h6></th>
                                 </tr>
                               </thead>
                                 <tbody>
-                              {% for i in resC.summary.data.bowling.1.scores %}
+                              {% for i in resS.data.bowling.1.scores %}
                                   <tr>
                                       <td>{{i.bowler}}</td>
                                       <td>{{i.O}}</td>
@@ -261,8 +269,8 @@
                                       <td>{{i.NB}}</td>
                                       <td>{{i.WD}}</td>
                                       <td>{{i.Econ}}</td>
-                                      <td>{{i.6s}}</td>
                                       <td>{{i.4s}}</td>
+                                      <td>{{i.6s}}</td>
                                   </tr>
                               {% endfor %}
                                <tbody>
@@ -275,30 +283,30 @@
     <table class="cont" style="background: #276678;border-radius: 25px">
       <tbody>
               <tr>
-                  <td colspan="2">{% if resC.summary.data.winner_team != "null" %}
-                            {{ resC.summary.data.winner_team}} have won the Match
+                  <td colspan="2">{% if resS.data.winner_team != "null" %}
+                            {{ resS.data.winner_team}} won the Match
                       {% endif %}
                   </td>
               </tr>
               <tr>
                   <td colspan="2">
-                      {% if resC.summary.data.man_of_the_match != "null" %}
-                      Man Of The Match : {{resC.summary.data.man_of_the_match.name}}
+                      {% if resS.data.man_of_the_match != "null" %}
+                      Man Of The Match : {{resS.data.man_of_the_match.name}}
                       {% endif %}
                   </td>
               </tr>
               <tr>
                   <td colspan="2">
-                  <h3>{{resC.summary.data.team.0.name}} Squad</h3>
-                      {% for i in resC.summary.data.team.0.players %}
+                  <h3>{{resS.data.team.0.name}} Squad</h3>
+                      {% for i in resS.data.team.0.players %}
                         {{i.name}} ,
                       {% endfor %}
                   </td>
                 </tr>
                 <tr>
                   <td>
-                      <h3>{{resC.summary.data.team.1.name}} Squad</h3>
-                      {% for i in resC.summary.data.team.1.players %}
+                      <h3>{{resS.data.team.1.name}} Squad</h3>
+                      {% for i in resS.data.team.1.players %}
                         {{i.name}} ,
                       {% endfor %}
                   </td>
@@ -307,104 +315,6 @@
           </table>
       </div>
       <!-- *************************footer start************************* -->
-        <!-- Footer -->
-        <footer class="page-footer font-small blue-grey lighten-5" style="background-color: black">
-          <!-- Footer Links -->
-          <div class="container text-center text-md-left mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3 dark-grey-text">
-              <!-- Grid column -->
-              <div class="col-md-2 col-lg-2 col-xl-2 mb-4">
-                <!-- Content -->
-                <a href="#"><h3>Cric<b style="color: red">World</b></h3></a>
-              </div>
-              <!-- Grid column -->
-              <!-- Grid column -->
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <!-- Links -->
-                <h6 class="text-uppercase font-weight-bold">Follow US ON</h6>
-                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-
-                <p >
-                   <a href="#" class="fa fa-facebook" style="margin-left :10px; "></a> Facebook
-                </p>
-                <p>
-               <a href="#" class="fa fa-twitter"  style="margin-left :10px; "></a>        Twitter
-                </p>
-                <p>
-                <a href="#" class="fa fa-instagram"  style="margin-left :10px; "></a>    Instagram
-                </p>
-                <p>
-                <a href="#" class="fa fa-youtube"  style="margin-left :10px; "></a>     Youtube
-                </p>
-                <p>
-                <a href="#" class="fa fa-pinterest"  style="margin-left :10px; "></a>   Pinterest
-                </p>
-              </div>
-              <!-- Grid column -->
-
-              <!-- Grid column -->
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <!-- Links -->
-                <h6 class="text-uppercase font-weight-bold">Company</h6>
-                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                  <a class="dark-grey-text" href="#signup">Careers</a>
-                </p>
-                <p>
-                  <a class="dark-grey-text" href="#!">Advertise</a>
-                </p>
-                <p>
-                  <a class="dark-grey-text" href="#aboutus">Privacy Policy</a>
-                </p>
-                <p>
-                  <a class="dark-grey-text" href="#help">Terms of Use</a>
-                </p>
-                 <p>
-                  <a class="dark-grey-text" href="#help">CricWorld Ads</a>
-                </p>
-              </div>
-              <!-- Grid column -->
-
-              <!-- Grid column -->
-             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <!-- Links -->
-                <h6 class="text-uppercase font-weight-bold">CONTACT US</h6>
-                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-
-                <p >
-                   <a href="#" class="fa fa-google" style="margin-left :10px; "></a> Mail Us  cricworldipl@gmail.com
-                </p>
-                <p><a href="#" class="fa fa-comments"  style="margin-left :10px; "></a>
-                Write About US
-                </p>
-                <p>
-                </a> <input type="text" placeholder="Plz Give Suggestions" name="varun" >
-                </p>
-                <p>
-                <a href="#" class="fa fa-android"  style="margin-left :10px; "></a>  App
-                </p>
-                <p>
-                <a href="#" class="fa fa-apple"  style="margin-left :10px; "></a>  ios
-                </p>
-              </div>
-              <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-          </div>
-          <!-- Footer Links -->
-
-          <!-- Copyright -->
-          <div class="footer-copyright text-center text-black-50 py-3">© 2021 Copyright:
-            <a class="dark-grey-text" href="https://mdbootstrap.com/"></a>
-          </div>
-          <!-- Copyright -->
-
-        </footer>
         <!-- Footer -->
     </body>
 </html>
