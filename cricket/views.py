@@ -230,7 +230,6 @@ def home(request, endfor=None):
                     resU['data'][k][b] = resU['data'][k].pop(a)
                     k = k + 1
     resR['data'] = Match.objects.all().order_by('-date') # Change this later with last 15 records
-    print("AA : ", resR['data'][0])
     return render(request, "home.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
 
 def scoreboard(request,id):
