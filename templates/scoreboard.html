@@ -126,24 +126,36 @@
       </nav>
        <div class="box">
             <table class="container">
+<<<<<<< HEAD
                     {% if resS.description != "null"%}
+=======
+                    {% if resC.description != "null"%}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                     <tr>
-                        <td colspan="7"><h2 style = "color : white "} >{{resC.description}}</h2></td>
+                        <td colspan="7"><h2 style = "color : white "} >{{resC.summary.description}}</h2></td>
                      </tr>
                     {% else %}
                     <tr>
+<<<<<<< HEAD
                         <td colspan="7"><h2 style = "color : white "} >{{resC.teamone}}   VS     {{resC.teamtwo}}</h2></td>
+=======
+                        <td colspan="7"><h2 style = "color : white "} >{{resC.summary.teamone}}   VS     {{resC.summary.teamtwo}}</h2></td>
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                      </tr>
                     {% endif %}
 
                 <tr>
-                    <td  colspan="7"> <i>{{resC.date}}</i></td>
+                    <td  colspan="7"> <i>{{resC.summary.date}}</i></td>
                 </tr>
                 <tr ><td colspan="7">{{resC.toss_winner_team}}  have won the toss and they  decided to {{resC.elected}} first</td></tr>
 
               <!--First Innings batting-->
                     <tr>
+<<<<<<< HEAD
                         <td colspan="7"><h3>{{resC.scoreone}}  <h4>Innings</h4>    </h3></td>
+=======
+                        <td colspan="7"><h3>{{R.scoreone}}  <h4>Innings</h4>    </h3></td>
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                     </tr>
                         <tr>
                               <th><h6>Batsman</h6></th>
@@ -156,7 +168,11 @@
                          </tr>
 
                     <tbody>
+<<<<<<< HEAD
                           {% for i in resS.data.batting.0.scores %}
+=======
+                          {% for i in resC.data.batting.0.scores %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                               <tr>
                                   <td>{{i.batsman}}</td>
                                   <td>{{i.dismissal_info}}</td>
@@ -189,7 +205,11 @@
                             </tr>
                           </thead>
                            <tbody>
+<<<<<<< HEAD
                           {% for i in resS.data.bowling.0.scores %}
+=======
+                          {% for i in resC.data.bowling.0.scores %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                               <tr>
                                   <td>{{i.bowler}}</td>
                                   <td>{{i.O}}</td>
@@ -209,11 +229,15 @@
 
                   <!--Second Innings Batting-->
 
-                  {% if resC.batsecond != "null" %}
+                  {% if resC.summary.batsecond != "null" %}
                       <div class="box">
                           <table class="container">
                                 <tr>
+<<<<<<< HEAD
                                  <td colspan="7"><h3>{{resC.scoretwo}}  </h3><h4>Innings</h4></td>
+=======
+                                 <td colspan="7"><h3>{{resC.summary.scoretwo}}  </h3><h4>Innings</h4></td>
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                                 </tr>
                                 <tr>
                                   <th><h6>Batsman</h6></th>
@@ -225,7 +249,11 @@
                                   <th><h6>SR</h6></th>
                                 </tr>
                                 <tbody>
+<<<<<<< HEAD
                                 {% for i in resS.data.batting.1.scores %}
+=======
+                                {% for i in resC.data.batting.1.scores %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                                   <tr>
                                       <td>{{i.batsman}}</td>
                                       <td>{{i.dismissal_info}}</td>
@@ -258,7 +286,11 @@
                                 </tr>
                               </thead>
                                 <tbody>
+<<<<<<< HEAD
                               {% for i in resS.data.bowling.1.scores %}
+=======
+                              {% for i in resC.data.bowling.1.scores %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                                   <tr>
                                       <td>{{i.bowler}}</td>
                                       <td>{{i.O}}</td>
@@ -282,30 +314,50 @@
     <table class="cont" style="background: #276678;border-radius: 25px">
       <tbody>
               <tr>
+<<<<<<< HEAD
                   <td colspan="2">{% if resS.data.winner_team != "null" %}
                             {{ resS.data.winner_team}} won the Match
+=======
+                  <td colspan="2">{% if resC.data.winner_team != "null" %}
+                            {{ resC.data.winner_team}} have won the Match
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                       {% endif %}
                   </td>
               </tr>
               <tr>
                   <td colspan="2">
+<<<<<<< HEAD
                       {% if resS.data.man_of_the_match != "null" %}
                       Man Of The Match : {{resS.data.man_of_the_match.name}}
+=======
+                      {% if resC.data.man_of_the_match != "null" %}
+                      Man Of The Match : {{resC.data.man_of_the_match.name}}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                       {% endif %}
                   </td>
               </tr>
               <tr>
                   <td colspan="2">
+<<<<<<< HEAD
                   <h3>{{resS.data.team.0.name}} Squad</h3>
                       {% for i in resS.data.team.0.players %}
+=======
+                  <h3>{{resC.data.team.0.name}} Squad</h3>
+                      {% for i in resC.data.team.0.players %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                         {{i.name}} ,
                       {% endfor %}
                   </td>
                 </tr>
                 <tr>
                   <td>
+<<<<<<< HEAD
                       <h3>{{resS.data.team.1.name}} Squad</h3>
                       {% for i in resS.data.team.1.players %}
+=======
+                      <h3>{{resC.data.team.1.name}} Squad</h3>
+                      {% for i in resC.data.team.1.players %}
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                         {{i.name}} ,
                       {% endfor %}
                   </td>

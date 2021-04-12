@@ -265,24 +265,36 @@ def scoreboard(request,id):
 
     a = 0
     if len(resC) == 0 :
+<<<<<<< HEAD
         resC = Match.objects.get(unique_id = id)
         #resS['summary'] = resC
         resS['description'] = 'null'
+=======
+        resC['data'] = Match.objects.filter(unique_id = id)
+        resS['summary'] = resC
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
         a = -1
 
     if a != -1 :
         # Adding team names according to batting order
+<<<<<<< HEAD
         resC['toss_winner_team'] = resS['data']['toss_winner_team']
+=======
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
         l = len(resS['data']['batting'][0]['title'])
         title = resS['data']['batting'][0]['title']
         title = title[::-1]  # reversing title
         title = title[27:l]
         title = title[::-1]
         resC['batfirst'] = title
+<<<<<<< HEAD
         if resC['batfirst'][:5] == resC['toss_winner_team'][:5] :
             resC['elected'] = "bat"
         else :
             resC['elected'] = 'bowl'
+=======
+
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
         if  len(resS['data']['batting']) > 1  :
             l = len(resS['data']['batting'][1]['title'])
             title = resS['data']['batting'][1]['title']
@@ -303,18 +315,27 @@ def scoreboard(request,id):
                 sthree = resC['description'][index + 1:]
                 sfour = '(' + str(over['Otwo']) + ')'
                 if resC['batfirst'][0:5] == sone[0:5]:
+<<<<<<< HEAD
                     resC['scoreone'] = sone + stwo
+=======
+                    resC['scoreonw'] = sone + stwo
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                     if over['Otwo'] == 0:
                         resC['scoretwo'] = sthree
                     else:
                         resC['scoretwo'] = sthree + sfour
                 else:
+<<<<<<< HEAD
                     resC['scoreone'] = sthree + stwo
+=======
+                    resC['score1'] = sthree + stwo
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
                     if over['Otwo'] == 0:
                         resC['scoretwo'] = sone
                     else:
                         resC['scoreone'] = sone + sfour
                 break
+<<<<<<< HEAD
 
     a = "dismissal-info"
     b = "dismissal_info"  # changing '-' to '_' as it is more convineant to parse '_' in DTL
@@ -337,3 +358,22 @@ def scoreboard(request,id):
 
 def ipl(request) :
     return render(request,"IPL.html")
+=======
+
+        a = "dismissal-info"
+        b = "dismissal_info"  # changing '-' to '_' as it is more convineant to parse '_' in DTL
+        for i in range(len(resS['data']['batting'])):
+            for j in resS['data']['batting'][i]['scores']:
+                j[b] = j.pop(a)
+
+        if resS['data']['man-of-the-match'] != "":
+            a = 'man-of-the-match'
+            b = 'man_of_the_match'
+            resS['data'][b] = resS['data'].pop(a)
+        else:
+            resS['data']['man-of-the-match'] = 'null'
+        resS['summary'] = resC
+
+    #print("1 : ", resS['summary'][0]['teamone'])
+    return render(request, "scoreboard.html", {'resC': resS, 'R' : resC})
+>>>>>>> 31c3cf58c91dbd314e7936a092a1b7105fca95ed
