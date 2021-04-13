@@ -40,13 +40,13 @@ def overs(resS) :
         2. Only team names will be stated there .
         3. when user click of them we will show the expected squads        
 '''
-
+#'Namibia' : 18, 'United States' : 19 ,' Papua New Guinea' : 20,
 Teams={
         'India' : 1,'England' : 2, 'New Zealand' : 3 ,' Australia' : 4,                                    #mans International
         'South Africa' : 5 ,' Pakistan' : 6, 'Bangladesh' : 7 ,
         'Sri Lanka' : 8, ' West Indies' : 9,'Afghanistan' : 10, ' Ireland' : 11 ,
         'Netherlands' : 12, ' Zimbabwe' : 13 ,'  Oman' : 14, ' Scotland' : 15 ,' UAE' : 16,
-        'Nepal' : 17, 'Namibia' : 18, 'United States' : 19 ,' Papua New Guinea' : 20,
+        'Nepal' : 17,
         'Chennai Super Kings ' : 21 ,'Delhi Capitals' : 22, 'Kolkata Knight Riders' : 23 ,                 #IPL
         'Mumbai Indians' : 24, ' Punjab Kings' : 25,'Royal Challengers Bangalore' : 26,
         'Rajasthan Royals' : 27 ,'Sunrisers Hyderabad' : 28,
@@ -141,6 +141,23 @@ def toss(i,resC,a,b,team_1,team_2,toss_winner_team) :
             resC['data'][i]['batfirst'] = team_1
             resC['data'][i]['batsecond'] = team_2
 
+def get_key() :
+    keys = ["2CKFCOve0rdpvaKLOZQBxZzfOqn1",
+            "SXCi9B1KSHOo5A9209U6x9nXmHm2",
+            "WmUasHazyvYrXqyz9pYpmgeqOI72",
+            "srZuPbXxGNQ4i0VxAHOudEx3jLv1",
+            "dLuRPBeTWuRtZeKrIH9qDsUR6kS2",
+            "ImJnOyn17kQ2qvhfp9MgR3Q0vsI2"
+            ]
+
+    ID = ""
+    res = defaultdict()
+    resC = defaultdict()
+    for i in keys:
+        res = json.loads(requests.get(f'http://cricapi.com/api/cricket?apikey={i}').text)
+        if not 'error' in res.keys():
+            ID = i
+            break
 
 def home(request, endfor=None):
     keys = ["2CKFCOve0rdpvaKLOZQBxZzfOqn1",
@@ -158,6 +175,7 @@ def home(request, endfor=None):
         "data" : []
     }
     for i in keys :
+        print(i)
         res = json.loads(requests.get(f'http://cricapi.com/api/cricket/?apikey={i}').text)
         if not 'error' in res.keys() :
             ID = i
