@@ -160,8 +160,9 @@ def get_key() :
             break
 
 def home(request, endfor=None):
-    keys = ["2CKFCOve0rdpvaKLOZQBxZzfOqn1",
+    keys = [
             "SXCi9B1KSHOo5A9209U6x9nXmHm2",
+            "2CKFCOve0rdpvaKLOZQBxZzfOqn1",
             "WmUasHazyvYrXqyz9pYpmgeqOI72",
             "srZuPbXxGNQ4i0VxAHOudEx3jLv1",
             "dLuRPBeTWuRtZeKrIH9qDsUR6kS2"
@@ -252,8 +253,8 @@ def home(request, endfor=None):
 
 def scoreboard(request,id):
     id = int(id)
-    keys = ["2CKFCOve0rdpvaKLOZQBxZzfOqn1",
-            "SXCi9B1KSHOo5A9209U6x9nXmHm2",
+    keys = ["SXCi9B1KSHOo5A9209U6x9nXmHm2",
+            "2CKFCOve0rdpvaKLOZQBxZzfOqn1",
             "WmUasHazyvYrXqyz9pYpmgeqOI72",
             "srZuPbXxGNQ4i0VxAHOudEx3jLv1",
             "dLuRPBeTWuRtZeKrIH9qDsUR6kS2"
