@@ -5,8 +5,8 @@ from collections import defaultdict
 from .models import Match
 from django.db import models
 # Create your views here.
-def index(request):
-    return render(request, "index.html", dict(link1='home'))
+#def index(request):
+ #   return render(request, "index.html")
 
 
 def overs(resS) :
@@ -159,7 +159,7 @@ def get_key() :
             ID = i
             break
 
-def home(request, endfor=None):
+def index(request, endfor=None):
     keys = [
             "SXCi9B1KSHOo5A9209U6x9nXmHm2",
             "2CKFCOve0rdpvaKLOZQBxZzfOqn1",
@@ -249,7 +249,7 @@ def home(request, endfor=None):
                     resU['data'][k][b] = resU['data'][k].pop(a)
                     k = k + 1
     resR['data'] = Match.objects.all().order_by('-date') # Change this later with last 15 records
-    return render(request, "home.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
+    return render(request, "index.html", {'resC' : resC['data'],'resR' : resR['data'],'resU' : resU['data']})
 
 def scoreboard(request,id):
     id = int(id)

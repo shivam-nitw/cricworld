@@ -1,26 +1,413 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Cricket ADDA</title>
-	<link rel="stylesheet" type="text/css" href="static/css/style.css">
-	<link href=" https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>CricWorld</title>
+         <!--this is required because earlier it's not loading CSS file because MIME checking was enabled -->
+        <link rel="stylesheet" type="text/css" href="static/css/styleo.css">
+        <script src="static/js/java.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="text/css" href="static/images/favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </head>
+    <body class="body">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a href="#" class="navbar-brand">Cric<b>World</b></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collection of nav links, forms, and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+                    <div class="navbar-nav">
+                        <a href="#" class="nav-item nav-link">HOME</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">NEWS</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item"> हिंदी</a>
+                                <a href="#" class="dropdown-item">English</a>
+                                <a href="#" class="dropdown-item">বাংলায়</a>
+                                <a href="#" class="dropdown-item">தமிழ்</a>
+                            </div>
+                        </div>
+                        <a href="/ipl" class="nav-item nav-link"><b>IPL</b></a>
 
-<header>
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">VIDEO</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">ODI World Cup </a>
+                                <a href="#" class="dropdown-item">T-20 World Cup</a>
+                                <a href="#" class="dropdown-item">IPL</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-item nav-link active">TEAMS</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">STATS</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">ODI Records</a>
+                                <a href="#" class="dropdown-item">T20 Records</a>
+                                <a href="#" class="dropdown-item">Test Records</a>
+                                <a href="#" class="dropdown-item">Player Rankings</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-item nav-link">GALLERY</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">MORE</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">About</a>
+                                <a href="#" class="dropdown-item">Contacts</a>
+                                <a href="#" class="dropdown-item">Ticket Booking</a>
+                                <a href="#" class="dropdown-item">Fantast</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="navbar-form form-inline">
+                        <div class="input-group search-box">
+                            <input type="text" id="search" class="form-control" placeholder="Search here...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="material-icons">&#xE8B6;</i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="navbar-nav ml-auto action-buttons">
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+                            <div class="dropdown-menu action-form">
+                                <form action="/examples/actions/confirmation.php" method="post">
+                                    <p class="hint-text">Sign in with your social media account</p>
+                                    <div class="form-group social-btn clearfix">
+                                        <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
+                                        <a href="#" class="btn btn-secondary twitter-btn float-right"><i class="fa fa-twitter"></i> Twitter</a>
+                                    </div>
+                                    <div class="or-seperator"><b>or</b></div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Username" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password" required="required">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                    <div class="text-center mt-2">
+                                        <a href="#">Forgot Your password?</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+                            <div class="dropdown-menu action-form">
+                                <form action="/examples/actions/confirmation.php" method="post">
+                                    <p class="hint-text">Fill in this form to create your account!</p>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Username" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+	    <!--1-->
+	    <div id="myDIV1" style="display: none;">
+                <h2 style="color:Tomato; text-align: center;">RECENT MATCHES</h2 >
+                <div class="box">
+                    <table class="container">
+                        <thead>
+                            <tr>
+                                <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+                                        </th>
+                                <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+                                </th>
+                                <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            <!--For CricApi Scores-->
+                {% for i in resR %}
+                    <div class="box" >
+                        <table class="container">
+                            <thead>
+                            <tr>
+                                <th><b>{{i.teamone}} vs {{i.teamtwo}}</b></th>
+                            </tr>
+                            </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{i.date}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{i.toss_winner_team}} have won the toss and they have decided to  {{i.elected}} first</td>
+                            </tr>
+                            <tr>
+                                <td ><b><a href="/scoreboard/{{i.unique_id}}" id="a">{{i.scoreone}}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ><b><a href="/scoreboard/{{i.unique_id}}" id="a">{{i.scoretwo}}</b><br></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ i.winner_team}} have won the Match
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Man Of The Match : {{i.man_of_the_match}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><br><b><a  href="#" class="l">Livescore</a> |
+                                        <a href="/scoreboard/{{i.unique_id}}" class="l">Scorecard</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
 
 
+        <!--2nd -->
 
-	<main>
-		<section>
-			<h2><i>Welcome To Cricworld</i></h2>
-			<h1>WE CELEBRATE CRICKET FOR <span class="change_content"> </span> <span style="margin-top: -10px;">  </span> </h1>
-			<p>"It's More Than  cricket"</p>
-			<a href='/home' class="btnone">Click To explore Cricket</a>
-		</section>
-	</main>
-</header>
-</body>
+        <div id="myDIV2" style="display: block;" >
+            <h2 style="color:Tomato; text-align: center;">LIVE MATCHES</h2 >
+            <div class="box">
+                <table class="container">
+                    <thead>
+                        <tr>
+                            <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+
+                                    </th>
+                            <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+
+                            </th>
+                            <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!--For CricApi Scores-->
+            {% for i in resC %}
+                {% if i.match_started == "true" %}
+                    <div class="box" >
+                        <table class="container">
+                            <thead>
+                            <tr>
+                                <th><b>{{i.localteam}} vs {{i.visitorteam}}</b></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>{{i.pubDate}}</td>
+                            </tr>
+                             <tr>
+                                <td>{{i.t_team_name}} have won the toss and they have elected to {{i.elected}} first</td>
+                            </tr>
+                            <tr>
+                                <td><b><a href="/scoreboard/{{i.unique_id}}" >{{i.score1}}</b></td>
+                            </tr>
+                            <tr>
+                                <td><b><a href="/scoreboard/{{i.unique_id}}" >{{i.score2}}</b></td>
+                            </tr>
+                            {% if i.winner_team != "null" %}
+                                <tr>
+                                    <td>
+                                        {{ i.winner_team }} have won the match
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if i.man_of_the_match != "null" %}
+                                <tr>
+                                    <td>
+                                        Man Of The Match : {{i.man_of_the_match}}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td><br><b><a  href="#" class="l">Livescore</a>  |
+                                        <a href="/scoreboard/{{i.unique_id}}" class="l">Scorecard</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="box">
+                        <table class="container">
+                            <thead>
+                                <tr align="center">
+                                    <!--<th id="adi"> <a href="index.html" id="see">See More</a>
+                                    </th>-->
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                 {% endif %}
+            {% endfor %}
+            </div>
+                <!--3rd -->
+
+        <div id="myDIV3" style="display: none;">
+            <h2 style="color:Tomato; text-align: center;">UPCOMING MATHES</h2 >
+            <div class="box">
+                <table class="container">
+                    <thead>
+                        <tr>
+                            <th id="adi">  <button class="button button1" onclick="myFunction1()">RECENT</button>
+
+                                    </th>
+                            <th id="adi">   <button class="button button2" onclick="myFunction2()">LIVE</button>
+
+                            </th>
+                            <th id="adi">       <button class="button button1" onclick="myFunction3()">UPCOMING</button>
+
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+            <!--For CricApi Scores-->
+            {% for i in resU %}
+                    <div class="box" >
+                        <table class="container">
+                           <thead>
+                            <tr>
+                                <th><b>{{i.teamone}} vs {{i.teamtwo}}</b></th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td><i>{{i.date}}</i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            {% endfor %}
+            </div>
+            <!-- *************************footer start************************* -->
+            <!-- Footer -->
+            <footer class="page-footer font-small blue-grey lighten-3" style="background-color: black">
+              <!-- Footer Links -->
+              <div class="container text-center text-md-left mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3 dark-grey-text">
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mb-4">
+                    <!-- Content -->
+                    <a href="#"><h3>Cric<b style="color: red">World</b></h3></a>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Follow US ON</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                    <p >
+                       <a href="#" class="fa fa-facebook" style="margin-left :10px; "></a> Facebook
+                    </p>
+                    <p>
+                   <a href="#" class="fa fa-twitter"  style="margin-left :10px; "></a>        Twitter
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-instagram"  style="margin-left :10px; "></a>    Instagram
+                    </p>
+                    <!--<p>
+                    <a href="#" class="fa fa-youtube"  style="margin-left :10px; "></a>     Youtube
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-pinterest"  style="margin-left :10px; "></a>   Pinterest
+                    </p> -->
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Company</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                      <a class="dark-grey-text" href="#signup">Careers</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#!">Advertise</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#help">CricWorld Ads</a>
+                    </p>
+                    <!-- <p>
+                      <a class="dark-grey-text" href="#aboutus">Privacy Policy</a>
+                    </p>
+                    <p>
+                      <a class="dark-grey-text" href="#help">Terms of Use</a>
+                    </p>
+                      -->
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">CONTACT US</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+                    <p >
+                        Mail Us at
+                        <a href="#" class="fa fa-google" style="margin-left :10px; "></a>
+                           cricworldipl@gmail.com
+                    </p>
+                    <p><a href="#" class="fa fa-comments"  style="margin-left :10px; "></a>
+                    Write About US
+                    </p>
+                    <p>
+                    </a> <input type="text" placeholder="Plz Give Suggestions" name="varun" >
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-android"  style="margin-left :10px; "></a>  App
+                    </p>
+                    <p>
+                    <a href="#" class="fa fa-apple"  style="margin-left :10px; "></a>  ios
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+              </div>
+              <!-- Footer Links -->
+
+              <!-- Copyright -->
+              <div class="footer-copyright text-center text-black-50 py-3">© 2021 Copyright:
+                <a class="dark-grey-text" href="https://mdbootstrap.com/"> </a>
+              </div>
+              <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+
+    </body>
 </html>
