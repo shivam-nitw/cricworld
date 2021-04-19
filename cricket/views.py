@@ -44,15 +44,16 @@ def overs(resS) :
 Teams={
         'India' : 1,'England' : 2, 'New Zealand' : 3 ,' Australia' : 4,                                    #mans International
         'South Africa' : 5 ,' Pakistan' : 6, 'Bangladesh' : 7 ,
-        'Sri Lanka' : 8, ' West Indies' : 9,'Afghanistan' : 10, ' Ireland' : 11 ,
-        'Netherlands' : 12, ' Zimbabwe' : 13 ,'  Oman' : 14, ' Scotland' : 15 ,' UAE' : 16,
-        'Nepal' : 17,
+        'Sri Lanka' : 8, ' West Indies' : 9,'Afghanistan' : 10,
+
         'Chennai Super Kings ' : 21 ,'Delhi Capitals' : 22, 'Kolkata Knight Riders' : 23 ,                 #IPL
         'Mumbai Indians' : 24, ' Punjab Kings' : 25,'Royal Challengers Bangalore' : 26,
         'Rajasthan Royals' : 27 ,'Sunrisers Hyderabad' : 28,
+
         'Sydney Sixers' : 29 ,'Perth Scorchers' : 30, '  Sydney Thunder' : 31,                             #Big Bash
         'Brisbane Heat' : 32, ' Adelaide Strikers' : 33 , ' Hobart Hurricaness' : 34 ,
         'Melbourne Stars' : 35, ' Melbourne Renegades' : 36,
+
         'India Women' : 37,'New Zealand Women' : 38 , ' South Africa Women' : 39 ,                         #Womens International
         'Pakistan Women' : 40,'Bangladesh Women' : 41 ,' Sri Lanka Women' : 42,
         'West Indies Women' : 43,' Ireland Women' : 44 ,' England Women' : 45 ,
@@ -176,7 +177,6 @@ def index(request, endfor=None):
         "data" : []
     }
     for i in keys :
-        print(i)
         res = json.loads(requests.get(f'http://cricapi.com/api/cricket/?apikey={i}').text)
         if not 'error' in res.keys() :
             ID = i
@@ -188,7 +188,7 @@ def index(request, endfor=None):
     resc = json.loads(requests.get(f'http://cricapi.com/api/matches/?apikey={ID}').text)
     for i in range(len(resC['data'])) :
         for j in range(len(resc['matches'])) :
-            if not "team-1" in resc['matches'][j]:          #to avoid last entry fail, giving key error after the last entry
+            if not "team-1" in resc['matches'][j]:          #This is done to avoid last entry fail, giving key error after the last entry
                 continue
             if resc['matches'][j]['team-1'] in Teams :
                 if(int(resC['data'][i]['unique_id']) == resc['matches'][j]['unique_id']) :
